@@ -1,0 +1,52 @@
+﻿Response Column,Definition
+MMSI,Maritime Mobile Service Identity - a nine-digit number sent in digital form over a radio frequency that identifies the vessel's transmitter station
+IMO,International Maritime Organisation number - a seven-digit number that uniquely identifies vessels
+SHIP_ID,A uniquely assigned ID by MarineTraffic for the subject vessel
+LAT,Latitude - a geographic coordinate that specifies the north-south position of the vessel on the Earth's surface
+LON,Longitude - a geographic coordinate that specifies the east-west position of the vessel on the Earth's surface
+SPEED,The speed (in knots x10) that the subject vessel is reporting according to AIS transmissions
+HEADING,The heading (in degrees) that the subject vessel is reporting according to AIS transmissions
+COURSE,The course (in degrees) that the subject vessel is reporting according to AIS transmissions
+STATUS,The AIS Navigational Status of the subject vessel as input by the vessel's crew. There might be discrepancies with the vessel's detail page when vessel speed is near zero (0) knots
+TIMESTAMP,The date and time (in UTC) that the subject vessel's position or event was recorded by MarineTraffic
+DSRC,"Describes whether the transmitted AIS message was received by a terrestrial (TER), satellite (SAT) or roaming (ROAM) AIS antenna."
+UTC_SECONDS,The time slot that the subject vessel uses to transmit information
+MARKET,Vessel's commercial market
+SHIPNAME,The Shipname of the subject vessel
+SHIPTYPE,The Shiptype of the subject vessel according to AIS transmissions
+CALLSIGN,A uniquely designated identifier for the vessel's transmitter station
+FLAG,The flag of the subject vessel according to AIS transmissions
+LENGTH,The overall Length (in metres) of the subject vessel
+WIDTH,The Breadth (in metres) of the subject vessel
+GRT,Gross Tonnage - unitless measure that calculates the moulded volume of all enclosed spaces of a ship
+DWT,Deadweight - a measure (in metric tons) of how much weight a vessel can safely carry (excluding the vessel's own weight)
+DRAUGHT,The Draught (in metres x10) of the subject vessel according to the AIS transmissions
+YEAR_BUILT,The year that the subject vessel was built
+SHIP_COUNTRY,The vessel's country
+SHIP_CLASS,"Vessel's class based on commercial market, capacity and/or dimensions"
+ROT,Rate of Turn
+TYPE_NAME,The MarineTraffic ship type of the vessel
+AIS_TYPE_SUMMARY,Further explanation of the SHIPTYPE ID
+DESTINATION,The Destination of the subject vessel according to the AIS transmissions
+ETA,The Estimated Time of Arrival to Destination of the subject vessel according to the AIS transmissions
+L_FORE,The relative distance from the AIS station of the vessel to the foremost of it (front / bow)
+W_LEFT,The relative distance from the AIS station of the vessel to the leftmost of it (left side / port)
+LAST_PORT,The Name of the Last Port the vessel has visited
+LAST_PORT_TIME,The Date and Time (in UTC) that the subject vessel departed from the Last Port
+LAST_PORT_ID,A uniquely assigned ID by MarineTraffic for the Last Port
+LAST_PORT_UNLOCODE,A uniquely assigned ID by United Nations for the Last Port
+LAST_PORT_COUNTRY,The Country that the Last Port is located at
+CURRENT_PORT,The name of the Port the subject vessel is currently in (NULL if the vessel is underway)
+CURRENT_PORT_ID,A uniquely assigned ID by MarineTraffic for the Current Port
+CURRENT_PORT_UNLOCODE,A uniquely assigned ID by United Nations for the Current Port
+CURRENT_PORT_COUNTRY,The Country that the Current Port is located at
+NEXT_PORT_ID,A uniquely assigned ID by MarineTraffic for the Next Port
+NEXT_PORT_UNLOCODE,A uniquely assigned ID by United Nations for the Next Port
+NEXT_PORT_NAME,The Name of the Next Port as derived by MarineTraffic based on the subject vessel's reported Destination
+NEXT_PORT_COUNTRY,The Country that the Next Port is located at
+ETA_CALC,The Estimated Time of Arrival to Destination of the subject vessel according to the MarineTraffic calculations
+ETA_UPDATED,The date and time (in UTC) that the ETA was calculated by MarineTraffic
+DISTANCE_TO_GO,The Remaining Distance (in NM) for the subject vessel to reach the reported Destination
+DISTANCE_TRAVELLED,The Distance (in NM) that the subject vessel has travelled since departing from Last Port
+AVG_SPEED,The average speed calculated for the subject vessel during the latest voyage (port to port)
+MAX_SPEED,The maximum speed reported by the subject vessel during the latest voyage (port to port)
