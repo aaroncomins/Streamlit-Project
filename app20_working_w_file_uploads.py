@@ -5,7 +5,7 @@ from PIL import Image
 import pandas as pd 
 import docx2txt
 import textract
-# from PyPDF2 import PdfFileReader
+from PyPDF2 import PdfFileReader
 # import pdfplumber
 
 # Load Images
@@ -65,33 +65,68 @@ def main():
 				file_details = {"filename":docx_file.name,
 				"filetype":docx_file.type,"filesize":docx_file.size}
 				st.write(file_details)
-				if docx_file.type == "text/plain":
+				# if docx_file.type == "text/plain":
 					# Read as bytes
 					# raw_text = docx_file.read()
 					# st.write(raw_text) # works but in bytes
 					# st.text(raw_text) # does work as expected
 
 					# Read as string (decode bytes to string)
-					raw_text = str(docx_file.read(),"utf-8")
+					# raw_text = str(docx_file.read(),"utf-8")
 					# st.write(raw_text) # Works
-					st.text(raw_text) # Work
-				elif docx_file == "application/pdf":
-					# try:
-					# 	with pdfplumber.open(docx_file) as pdf:
-					# 		pages = pdf.pages[0]
-					# 		st.write(pages.extract_text())
-					# except:
-					# 	st.write("None")
-						
-                    # Using PyPDF
-					raw_text = read_pdf(docx_file)
-					st.write(raw_text)
+					# st.text(raw_text) # Work
 				
-				else:
+				#new
+				if docx_file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+
+					# Likely a Word document, use docx2txt
 					raw_text = docx2txt.process(docx_file)
 					st.write(raw_text)
-		
 					st.text(raw_text)
+				elif docx_file.type == "text/plain":
+					# Plain text file, read directly
+					raw_text = str(docx_file.read(), "utf-8")
+					st.write(raw_text)
+					st.text(raw_text)
+				elif docx_file.type == "application/pdf":
+					try:
+						import io
+						from PyPDF2 import PdfReader
+						# Read file content into BytesIO
+						pdf_bytes = io.BytesIO(docx_file.read())
+						pdf_reader = PdfReader(pdf_bytes)
+						# ... (rest of your PDF processing)
+						# Extract text from all pages
+						text = ""
+						for page_num in range(len(pdf_reader.pages)):
+							page = pdf_reader.pages[page_num]
+							text += page.extract_text()
+
+						# Display the extracted text
+						st.write(text)
+					except Exception as e:
+						st.write("An error occurred processing the PDF:", e)
+				else:
+					st.write("Unsupported file format. Please upload a DOCX, TXT, or PDF file.")
+				#new
+					
+				# elif docx_file == "application/pdf":
+				# 	try:
+				# 		with pdfplumber.open(docx_file) as pdf:
+				# 			pages = pdf.pages[0]
+				# 			st.write(pages.extract_text())
+				# 	except:
+				# 		st.write("None")
+						
+                #     # Using PyPDF
+				# 	# raw_text = read_pdf(docx_file)
+				# 	# st.write(raw_text)
+				
+				# else:
+				# 	raw_text = docx2txt.process(docx_file)
+				# 	st.write(raw_text)
+		
+				# 	st.text(raw_text)
 
 	else:
 		st.subheader("About")
